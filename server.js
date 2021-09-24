@@ -10,6 +10,8 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors())
 
+app.use(express.static('upload'));
+
 app.get('/test', (req, res) => {
     res.send('Welcome to your express API');
 });
