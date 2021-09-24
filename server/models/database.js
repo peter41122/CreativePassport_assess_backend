@@ -9,13 +9,10 @@ var conn = mysql.createConnection({
 });
 
 conn.connect((err) => {
-  if (err) {
-    console.error('error connecting: ' + err.stack);
-    return;
-  }
+  if (err) throw err
 
   console.log("Connection established!");
-  console.log('connected as id ' + conn.threadId);
+  console.log("Connected as id " + conn.threadId);
 });
 
 

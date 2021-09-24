@@ -10,11 +10,8 @@ const Upload = function(uploadedData) {
 }
 
 Upload.create = async (newData, result) => {
-  console.log("newData: ", newData);
-
   conn.query("INSERT INTO storage SET ?", newData, (err, res) => {
     if (err) {
-      console.log("error: ", err)
       result(err, null)
       return
     }
@@ -26,7 +23,6 @@ Upload.create = async (newData, result) => {
 Upload.getAll = async result => {
   conn.query("SELECT * FROM storage ", (err, res) => {
     if (err) {
-      console.log("error: ", err)
       result(null, err)
       return
     }
@@ -38,7 +34,6 @@ Upload.getAll = async result => {
 Upload.findById = async (selId, result) => {
   conn.query("SELECT * FROM storage WHERE id=${selId}", (err, res) => {
     if (err) {
-      console.log("error: ", err)
       result(null, err)
       return
     }
@@ -53,10 +48,8 @@ Upload.findById = async (selId, result) => {
 }
 
 Upload.deleteById = async (selectedId, result) => {
-  console.log("selectedId : >>>", selectedId);
   conn.query(`DELETE FROM storage WHERE id=${selectedId}`, (err, res) => {
     if (err) {
-      console.log("error: ", err)
       result(err, null)
       return
     }

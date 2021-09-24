@@ -2,9 +2,6 @@ var sql = require('../models/database');
 var UploadModel = require('../models/upload.model');
 
 exports.add = (req, res) => {
-  console.log("Music:  ", req.file);
-  console.log("Body: ", req.body);
-
   const newUpload = new UploadModel({
     firstname: req.body.firstName,
     lastname: req.body.lastName,
@@ -38,8 +35,6 @@ exports.findAll = (req, res) => {
 }
 
 exports.deleteById = (req, res) => {
-  console.log("req.body ------------>>>> ", req.body);
-  console.log("req.body.selectedId ------------>>>> ", req.body.selectedId);
   UploadModel.deleteById(req.body.selectedId, (err, data) => {
     if (err) {
       if (err.kind === "not_found") {
